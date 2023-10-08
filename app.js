@@ -5,6 +5,7 @@ import {
   errorHandler,
   notFound,
   prismaErrorHandler,
+  zodErrorHandler,
 } from "./middlewares/index.js";
 
 const app = express();
@@ -12,6 +13,7 @@ app.use(express.json());
 const { PORT } = process.env;
 
 app.use("/api/v1", router);
+app.use(zodErrorHandler);
 app.use(prismaErrorHandler);
 app.use(notFound);
 app.use(errorHandler);

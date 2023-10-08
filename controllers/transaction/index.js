@@ -1,9 +1,13 @@
 import { getBankAccounts } from "../../helpers/index.js";
 import { prisma } from "../../prisma/client/index.js";
+import { VSCreateTransaction } from "../../validation-schema/index.js";
 
 export const createTransaction = async (req, res, next) => {
   try {
     const { sourceAccountNumber, destinationAccountNumber, amount } = req.body;
+
+    VSCreateTransaction.parse(req.body);
+
     const bankAccounts = await getBankAccounts();
     const source = bankAccounts.find(
       (bankAccount) => bankAccount.accountNumber === sourceAccountNumber

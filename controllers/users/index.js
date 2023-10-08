@@ -1,10 +1,12 @@
-import { Prisma } from "@prisma/client";
 import { getAllProfiles, getAllUsers } from "../../helpers/index.js";
 import { prisma } from "../../prisma/client/index.js";
+import { VSCreateUsers } from "../../validation-schema/index.js";
 
 export const createUser = async (req, res, next) => {
   try {
     const { name, email, password, phoneNumber } = req.body;
+
+    VSCreateUsers.parse(req.body);
 
     const users = await getAllUsers();
     if (users.find((user) => user.email === email)) {

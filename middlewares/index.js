@@ -50,6 +50,14 @@ export const prismaErrorHandler = (err, req, res, next) => {
   });
 };
 
+export const zodErrorHandler = (err, req, res, next) => {
+  return res.status(400).json({
+    status: false,
+    message: "Bad Request",
+    error: err.errors[0].message,
+  });
+};
+
 export const notFound = (req, res, next) => {
   res.status(404).json({
     status: false,

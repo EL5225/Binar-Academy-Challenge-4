@@ -1,8 +1,12 @@
 import { prisma } from "../../prisma/client/index.js";
+import { VSCreateAccount } from "../../validation-schema/index.js";
 
 export const createBankAccount = async (req, res, next) => {
   try {
     const { name, balance, userId } = req.body;
+
+    VSCreateAccount.parse(req.body);
+
     const bankAccount = await prisma.bankAccounts.create({
       data: {
         name,

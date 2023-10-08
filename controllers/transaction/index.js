@@ -162,9 +162,9 @@ export const getTransactionById = async (req, res, next) => {
     });
 
     if (!transactionData) {
-      return res.status(400).json({
+      return res.status(404).json({
         status: false,
-        message: `Bad Request`,
+        message: `Not Found`,
         error: `Transaction not found with id ${transaction}`,
       });
     }

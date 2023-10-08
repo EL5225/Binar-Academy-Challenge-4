@@ -109,9 +109,9 @@ export const getBankAccountById = async (req, res, next) => {
     });
 
     if (!bankAccount) {
-      return res.status(400).json({
+      return res.status(404).json({
         status: false,
-        message: `Bad Request`,
+        message: `Not Found`,
         error: `Bank account was not found with id ${id}`,
       });
     }

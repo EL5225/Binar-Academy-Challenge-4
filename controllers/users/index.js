@@ -1,3 +1,4 @@
+import { Prisma } from "@prisma/client";
 import { getAllProfiles, getAllUsers } from "../../helpers/index.js";
 import { prisma } from "../../prisma/client/index.js";
 

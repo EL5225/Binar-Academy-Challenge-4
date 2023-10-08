@@ -1,5 +1,5 @@
 # Binar-Academy-Challenge-4
-Binar Academy Challenge 4 - BEJS 1
+Binar Academy Challenge 4 - BEJS 1 - Muhammad Luthfi Ramadhan
 
 - use postgresql
 - don't forget to create an .env file with an example in .env-example file

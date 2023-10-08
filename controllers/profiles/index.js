@@ -24,6 +24,7 @@ export const updateProfiles = async (req, res, next) => {
       data: updated,
     });
   } catch (error) {
+    console.log(error);
     next(error);
   }
 };

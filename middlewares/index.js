@@ -46,7 +46,7 @@ export const prismaErrorHandler = (err, req, res, next) => {
   return res.status(503).json({
     status: false,
     message: "Something Bad Happened",
-    error: err.message,
+    error: err?.message,
   });
 };
 
@@ -54,7 +54,10 @@ export const zodErrorHandler = (err, req, res, next) => {
   return res.status(400).json({
     status: false,
     message: "Bad Request",
-    error: err.errors[0].message,
+    error: {
+      name: `Invalid property ${err?.errors[0]?.path[0]}`,
+      message: err?.errors[0]?.message,
+    },
   });
 };
 
